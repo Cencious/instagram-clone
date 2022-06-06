@@ -14,4 +14,6 @@ from notification.models import Notification
 def user_directory_path(instance, filename):
     return 'user_{0}/{1}'.format(instance.user.id, filename)
 
-
+class Tag(models.Model):
+    title = models.CharField(max_length=75, verbose_name='Tag')
+    slug = models.SlugField(null=False, unique=True, default=uuid.uuid1)
