@@ -51,3 +51,4 @@ def NewPost(request):
             picture = form.cleaned_data.get('picture')
             caption = form.cleaned_data.get('caption')
             tags = form.cleaned_data.get('tags')
+            tag_list= list(tag_form.split(','))
