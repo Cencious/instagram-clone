@@ -49,6 +49,8 @@ class Post(models.Model):
         return reverse("post-details", args=[str(self.id)])
 
 
+
+
 class Follow(models.Model):
     follower = models.ForeignKey(User, on_delete=models.CASCADE, related_name='follower')
     following = models.ForeignKey(User, on_delete=models.CASCADE, related_name='following')
@@ -74,3 +76,16 @@ class Stream(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True)
     date = models.DateTimeField()
+
+    def add_post(sender, instance, *args, **kwargs):
+        post = instance
+        user = post.user
+        followers = Follow.objects.all().filter(following=user)
+
+post_save.connect(Stream.add_post, sender=Post)
+
+post_save.connect(Likes.user_liked_post, sender=Likes)
+post_delete.connect(Likes.user_unliked_post, sender=Likes)
+
+post_save.connect(Follow.user_follow, sender=Follow)
+post_delete.connect(Follow.user_unfollow, sender=Follow)
