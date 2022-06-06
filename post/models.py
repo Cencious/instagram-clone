@@ -3,7 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.base import Model
 from django.db.models.signals import post_save, post_delete
-from django.utils.text import slugify
+from django.utils.text import slugify #to help with hashtags
 from django.urls import reverse
 import uuid
 import notification
@@ -13,7 +13,7 @@ from notification.models import Notification
 
 # uploading user files to a specific directory
 def user_directory_path(instance, filename):
-    return 'user_{0}/{1}'.format(instance.user.id, filename)
+    return 'user_{0}/{1}'.format(instance.user.id, filename)#
 
 class Tag(models.Model):
     title = models.CharField(max_length=75, verbose_name='Tag')
@@ -23,11 +23,11 @@ class Tag(models.Model):
         verbose_name = 'Tag'
         verbose_name_plural = 'Tags'
     
-    def get_absolute_url(self):
+    def get_absolute_url(self): #when a user clicks on the tags it takes them to a page with more details.
         return reverse('tags',args=[self.slug])
 
     def __str__(self):
-        return self.title
+        return self.title #returns the title of the tag
     
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -35,12 +35,12 @@ class Tag(models.Model):
         return super().save(*args, **kwargs)
     
 
-class Post(models.Model):
+class Post(models.Model):#helps keep track of posts
     id = models.UUIDField(primary_key=True,
     default=uuid.uuid4, editable=False)
-    picture = models.ImageField(upload_to=user_directory_path, verbose_name="Picture")
+    picture = models.ImageField(upload_to=user_directory_path, verbose_name="Picture") #allows adding pictures
     caption = models.CharField(max_length=10000, verbose_name="Caption")
-    posted = models.DateField(auto_now_add=True)
+    posted = models.DateField(auto_now_add=True)#gets current date and time and appends to the post.
     tags = models.ManyToManyField(Tag, related_name="tags")
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     likes = models.IntegerField(default=0)
@@ -48,6 +48,23 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse("post-details", args=[str(self.id)])
 
+class Likes(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="post_likes")
+
+    def user_liked_post(sender, instance, *args, **kwargs):
+        like = instance
+        post = like.post
+        sender = like.user
+        notify =Notification(post=post, sender=sender, user=post.user)
+        notify.save()
+
+    def user_unliked_post(sender, instance, *args, **kwargs):
+        like = instance
+        post = like.post
+        sender =like.user
+        notify = Notification.objects.filter(post.post, sender=sender, notification_types=1)
+        notify.delete()
 
 
 
