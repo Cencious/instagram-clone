@@ -46,3 +46,10 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse("post-details", args=[str(self.id)])
+
+
+class Follow(models.Model):
+    follower = models.ForeignKey(User, on_delete=models.CASCADE, related_name='follower')
+    following = models.ForeignKey(User, on_delete=models.CASCADE, related_name='following')
+
+    
