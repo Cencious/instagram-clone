@@ -52,3 +52,7 @@ def NewPost(request):
             caption = form.cleaned_data.get('caption')
             tags = form.cleaned_data.get('tags')
             tag_list= list(tag_form.split(','))
+
+            for tag in tag_list:
+                t, created = Tag.objects.get_or_create(title=tag)
+                
