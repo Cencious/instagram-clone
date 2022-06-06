@@ -47,3 +47,7 @@ def NewPost(request):
 
     if request.method == 'POST':
         form = NewPostform(request.POST, request.FILES)
+        if form.is_valid():
+            picture = form.cleaned_data.get('picture')
+            caption = form.cleaned_data.get('caption')
+            tags = form.cleaned_data.get('tags')
