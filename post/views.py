@@ -55,4 +55,6 @@ def NewPost(request):
 
             for tag in tag_list:
                 t, created = Tag.objects.get_or_create(title=tag)
-                
+                tag_objs.append(t)
+            
+            p, created = Post.objects.get_or_create()
