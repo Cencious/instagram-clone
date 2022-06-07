@@ -37,7 +37,7 @@
                                     <img src="{% static 'assets2/images/6.jpg' %}">
                                 </div>
                             </div>
-                            <span class="story__user">@destiny</span>
+                            <span class="story__user">@gir</span>
                         </button>
                     <button class="story">
                             <div class="story__avatar">
@@ -50,7 +50,7 @@
                                     <img src="{% static 'assets2/images/1.jpg' %}">
                                 </div>
                             </div>
-                            <span class="story__user">@james</span>
+                            <span class="story__user">@jay</span>
                         </button>
                         <button class="story">
                             <div class="story__avatar">
@@ -63,7 +63,7 @@
                                     <img src="{% static 'assets2/images/2.jpg' %}" style="width: 100px; height: 100px; object-fit: cover;">
                                 </div>
                             </div>
-                            <span class="story__user">@samuel</span>
+                            <span class="story__user">@sue</span>
                         </button>
                         <button class="story">
                             <div class="story__avatar">
@@ -76,7 +76,7 @@
                                     <img src="{% static 'assets2/images/5.jpg' %}" style="width: 100px; height: 100px; object-fit: cover;">
                                 </div>
                             </div>
-                            <span class="story__user">@princewill</span>
+                            <span class="story__user">@prince</span>
                         </button>
                          <button class="story">
                             <div class="story__avatar">
@@ -89,7 +89,7 @@
                                     <img src="{% static 'assets2/images/7.png' %}">
                                 </div>
                             </div>
-                            <span class="story__user">@robert</span>
+                            <span class="story__user">@cen</span>
                         </button>
                         <button class="story">
                             <div class="story__avatar">
@@ -102,7 +102,7 @@
                                     <img src="{% static 'assets2/images/4.jpg' %}">
                                 </div>
                             </div>
-                            <span class="story__user">@destiny</span>
+                            <span class="story__user">@gir</span>
                         </button>
                     </div>
                     <button class="stories__right-button">
@@ -114,7 +114,7 @@
 
                 <div class="posts">
                     {% for post in post_items %}
-                    <article class="post">
+                         <article class="post">
                         <div class="post__header">
                             
                                 <div class="post__profile">
@@ -141,8 +141,7 @@
                         <div class="post__content">
                             <div class="post__medias">
                                 <a href="{% url 'post-details' post.id %}"><img class="post__media" src="{{ post.picture.url }}" alt="Post Content" style="width: 700px; height: 348px; object-fit: cover;"></a>
-<!--                                <img class="post__media" src="{% static 'assets1/insta-clone.png' %}" alt="Post Content">-->
-<!--                                <img class="post__media" src="{% static 'assets1/insta-clone.png' %}" alt="Post Content">-->
+                               
                             </div>
                         </div>
 
@@ -177,10 +176,8 @@
                             <div class="post__infos">
                                 <div class="post__likes">
                                     <a href="#" class="post__likes-avatar">
-<!--                                        <img src="assets1/default-user.png" alt="User Picture">-->
                                     </a>
 
-<!--                                    <span>Liked by <a class="post__name&#45;&#45;underline" href="#">user123</a> and <a href="#">73 others</a></span>-->
                                     <span>{{post.likes}} <a class="post__name--underline" href="#">likes</a> <a href="#"></a></span>
                                 </div>
 
@@ -190,7 +187,6 @@
                                         {{post.caption}}
 
                                     </span>
-<!--                                    {{post.caption}}-->
                                 </div>
                                 <p style="font-size: 13px;">{% for tag in post.tags.all %}
                                     <a href="{{ tag.get_absolute_url }}" style="text-decoration: none;">
@@ -239,7 +235,7 @@
 
             <section class="side-menu">
                 <div class="side-menu__user-profile">
-                    <a href="https://github.com/leocosta1" target="_blank" class="side-menu__user-avatar">
+                    <a href="" target="_blank" class="side-menu__user-avatar">
                         <img src="{{ request.user.profile.image.url }}" alt="User Picture">
                     </a>
                     <div class="side-menu__user-info">
