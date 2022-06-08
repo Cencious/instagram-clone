@@ -131,7 +131,7 @@ def like(request, post_id):
         
     post.likes = current_likes
     post.save()
-    # return HttpResponseRedirect(reverse('post-details', args=[post_id]))
+    
     return HttpResponseRedirect(reverse('post-details', args=[post_id]))
 
 @login_required

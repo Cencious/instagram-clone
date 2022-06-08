@@ -62,8 +62,8 @@ class Likes(models.Model):
     def user_unliked_post(sender, instance, *args, **kwargs):
         like = instance
         post = like.post
-        sender =like.user
-        notify = Notification.objects.filter(post.post, sender=sender, notification_types=1)
+        sender = like.user
+        notify = Notification.objects.filter(post=post, sender=sender, notification_types=1)
         notify.delete()
 
 
@@ -99,7 +99,7 @@ class Stream(models.Model):
         followers = Follow.objects.all().filter(following=user)
 
         for follower in followers:
-            stream =Stream(post=post,user=follower, date=post.posted)
+            stream = Stream(post=post, user=follower.follower, date=post.posted, following=user)
             stream.save()
 
 post_save.connect(Stream.add_post, sender=Post)
