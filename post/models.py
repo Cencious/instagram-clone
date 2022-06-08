@@ -3,10 +3,10 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.base import Model
 from django.db.models.signals import post_save, post_delete
-from django.utils.text import slugify #to help with hashtags
+from django.utils.text import slugify 
 from django.urls import reverse
 import uuid
-import notification
+
 from notification.models import Notification
 
 # Create your models here.
@@ -23,11 +23,11 @@ class Tag(models.Model):
         verbose_name = 'Tag'
         verbose_name_plural = 'Tags'
     
-    def get_absolute_url(self): #when a user clicks on the tags it takes them to a page with more details.
+    def get_absolute_url(self):
         return reverse('tags',args=[self.slug])
 
     def __str__(self):
-        return self.title #returns the title of the tag
+        return self.title
     
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -35,12 +35,12 @@ class Tag(models.Model):
         return super().save(*args, **kwargs)
     
 
-class Post(models.Model):#helps keep track of posts
+class Post(models.Model):
     id = models.UUIDField(primary_key=True,
     default=uuid.uuid4, editable=False)
-    picture = models.ImageField(upload_to=user_directory_path, verbose_name="Picture") #allows adding pictures
+    picture = models.ImageField(upload_to=user_directory_path, verbose_name="Picture") 
     caption = models.CharField(max_length=10000, verbose_name="Caption")
-    posted = models.DateField(auto_now_add=True)#gets current date and time and appends to the post.
+    posted = models.DateField(auto_now_add=True)
     tags = models.ManyToManyField(Tag, related_name="tags")
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     likes = models.IntegerField(default=0)
@@ -67,7 +67,6 @@ class Likes(models.Model):
         notify.delete()
 
 
-
 class Follow(models.Model):
     follower = models.ForeignKey(User, on_delete=models.CASCADE, related_name='follower')
     following = models.ForeignKey(User, on_delete=models.CASCADE, related_name='following')
@@ -76,7 +75,7 @@ class Follow(models.Model):
         follow = instance
         sender = follow.follower
         following = follow.following
-        notify = Notification(senders=sender,
+        notify = Notification(sender=sender,
         user=following, notification_types=3)
         notify.save()
 
@@ -98,6 +97,10 @@ class Stream(models.Model):
         post = instance
         user = post.user
         followers = Follow.objects.all().filter(following=user)
+
+        for follower in followers:
+            stream =Stream(post=post,user=follower, date=post.posted)
+            stream.save()
 
 post_save.connect(Stream.add_post, sender=Post)
 
