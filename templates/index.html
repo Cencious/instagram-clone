@@ -12,7 +12,6 @@
                     </button>
                     <div class="stories__content">
 
-
                         <button class="story">
                             <div class="story__avatar">
                                 <div class="story__border">
@@ -26,6 +25,21 @@
                             </div>
                             <span class="story__user">@{{request.user.username}}</span>
                         </button>
+
+                    <button class="story">
+                            <div class="story__avatar">
+                                <div class="story__border">
+                                    <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+                                        <circle r="31" cy="32" cx="32"/>
+                                    </svg>
+                                </div>
+                                <div class="story__picture">
+                                    <img src="{% static 'assets2/images/8.jpeg' %}">
+                                </div>
+                            </div>
+                            <span class="story__user">@jay</span>
+                        </button>
+
                         <button class="story">
                             <div class="story__avatar">
                                 <div class="story__border">
@@ -34,12 +48,27 @@
                                     </svg>
                                 </div>
                                 <div class="story__picture">
-                                    <img src="{% static 'assets2/images/6.jpg' %}">
+                                    <img src="{% static 'assets2/images/7.jpeg' %}" style="width: 100px; height: 100px; object-fit: cover;">
                                 </div>
                             </div>
-                            <span class="story__user">@gir</span>
+                            <span class="story__user">@shia</span>
                         </button>
-                    <button class="story">
+
+                        <button class="story">
+                            <div class="story__avatar">
+                                <div class="story__border">
+                                    <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+                                        <circle r="31" cy="32" cx="32"/>
+                                    </svg>
+                                </div>
+                                <div class="story__picture">
+                                    <img src="{% static 'assets2/images/8.jpeg' %}" style="width: 100px; height: 100px; object-fit: cover;">
+                                </div>
+                            </div>
+                            <span class="story__user">@risingstar</span>
+                        </button>
+                        
+                        <button class="story">
                             <div class="story__avatar">
                                 <div class="story__border">
                                     <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
@@ -50,60 +79,9 @@
                                     <img src="{% static 'assets2/images/1.jpg' %}">
                                 </div>
                             </div>
-                            <span class="story__user">@jay</span>
+                            <span class="story__user">@artist</span>
                         </button>
-                        <button class="story">
-                            <div class="story__avatar">
-                                <div class="story__border">
-                                    <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
-                                        <circle r="31" cy="32" cx="32"/>
-                                    </svg>
-                                </div>
-                                <div class="story__picture">
-                                    <img src="{% static 'assets2/images/2.jpg' %}" style="width: 100px; height: 100px; object-fit: cover;">
-                                </div>
-                            </div>
-                            <span class="story__user">@sue</span>
-                        </button>
-                        <button class="story">
-                            <div class="story__avatar">
-                                <div class="story__border">
-                                    <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
-                                        <circle r="31" cy="32" cx="32"/>
-                                    </svg>
-                                </div>
-                                <div class="story__picture">
-                                    <img src="{% static 'assets2/images/5.jpg' %}" style="width: 100px; height: 100px; object-fit: cover;">
-                                </div>
-                            </div>
-                            <span class="story__user">@prince</span>
-                        </button>
-                         <button class="story">
-                            <div class="story__avatar">
-                                <div class="story__border">
-                                    <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
-                                        <circle r="31" cy="32" cx="32"/>
-                                    </svg>
-                                </div>
-                                <div class="story__picture">
-                                    <img src="{% static 'assets2/images/7.png' %}">
-                                </div>
-                            </div>
-                            <span class="story__user">@cen</span>
-                        </button>
-                        <button class="story">
-                            <div class="story__avatar">
-                                <div class="story__border">
-                                    <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
-                                        <circle r="31" cy="32" cx="32"/>
-                                    </svg>
-                                </div>
-                                <div class="story__picture">
-                                    <img src="{% static 'assets2/images/4.jpg' %}">
-                                </div>
-                            </div>
-                            <span class="story__user">@gir</span>
-                        </button>
+
                     </div>
                     <button class="stories__right-button">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -114,7 +92,7 @@
 
                 <div class="posts">
                     {% for post in post_items %}
-                         <article class="post">
+                    <article class="post">
                         <div class="post__header">
                             
                                 <div class="post__profile">
@@ -141,7 +119,7 @@
                         <div class="post__content">
                             <div class="post__medias">
                                 <a href="{% url 'post-details' post.id %}"><img class="post__media" src="{{ post.picture.url }}" alt="Post Content" style="width: 700px; height: 348px; object-fit: cover;"></a>
-                               
+
                             </div>
                         </div>
 
@@ -176,7 +154,6 @@
                             <div class="post__infos">
                                 <div class="post__likes">
                                     <a href="#" class="post__likes-avatar">
-                                    </a>
 
                                     <span>{{post.likes}} <a class="post__name--underline" href="#">likes</a> <a href="#"></a></span>
                                 </div>
@@ -187,6 +164,7 @@
                                         {{post.caption}}
 
                                     </span>
+<!--                                    {{post.caption}}-->
                                 </div>
                                 <p style="font-size: 13px;">{% for tag in post.tags.all %}
                                     <a href="{{ tag.get_absolute_url }}" style="text-decoration: none;">
@@ -235,7 +213,7 @@
 
             <section class="side-menu">
                 <div class="side-menu__user-profile">
-                    <a href="" target="_blank" class="side-menu__user-avatar">
+                    <a href="https://github.com/leocosta1" target="_blank" class="side-menu__user-avatar">
                         <img src="{{ request.user.profile.image.url }}" alt="User Picture">
                     </a>
                     <div class="side-menu__user-info">
@@ -244,9 +222,9 @@
                         {% else %}
                         <a href="{{request.user.username}}">{{user.username}}</a>
                         {% endif %}
-                        <span>@{{request.user.username}}</span>
+                       
                     </div>
-                    <a class="side-menu__user-button">View Profile</a>
+                   
                 </div>
 
                 <div class="side-menu__suggestions-section">
