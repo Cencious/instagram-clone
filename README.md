@@ -1,10 +1,8 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 ## App Name
 * Instagram-clone
-=======
-# instagram-clone
-This is an app that enables a client sign in , upload pics, see profile with all uploaded pics, follow other users  and see their profile, like pic and comment
-## App Name
+
 >>>>>>> 6e1388404dd44209b9e5f943f94225d3e68f8745
 
 ![Alt text](./static/screenshot/home.png "Optional Title")
@@ -60,6 +58,8 @@ https://picsinsta.herokuapp.com/
 MIT License
 
 Copyright (c) 2022 Innoncencia Kakan/instagram-clone
+=======
+>>>>>>> 01cb0c3566b258527b5aeef8bc4d122ce1ce69c4
 
 
 
