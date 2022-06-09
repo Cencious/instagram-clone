@@ -51,28 +51,3 @@ https://picsinsta.herokuapp.com/
 MIT License
 
 Copyright (c) 2022 Innoncencia Kakan/instagram-clone
-
-
-
-
-
-
-
-
-
-
-
-<<<<<<< HEAD
-=======
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> 6e1388404dd44209b9e5f943f94225d3e68f8745
