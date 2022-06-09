@@ -12,6 +12,7 @@ Instagram-clone is an app that enables a client sign in , upload pics, see profi
 ## Live link:
 
 https://picsinsta.herokuapp.com/
+* link has http error
 
 ## User stories
 
