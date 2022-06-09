@@ -13,6 +13,9 @@ class Comment(models.Model):
 
     # def __str__(self):
     #     return self.post
+
+    def save_comment(self):
+        self.save()
     
     def user_comment_post(sender, instance, *args, **kwargs):
         comment = instance
