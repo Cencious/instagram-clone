@@ -13,15 +13,14 @@ Instagram-clone is an app that enables a client sign in , upload pics, see profi
 
 https://picsinsta.herokuapp.com/
 
+## User stories
+
+* A user can Sign in to the application to start using.
 
 ##
 ![Alt text](./static/screenshot/signin.png "Optional Title")
 
 
-
-## User stories
-
-* A user can Sign in to the application to start using.
 * A user can Upload their pictures to the application. 
 * A user can See my profile with all their pictures.
 * A user can Follow other users and see their pictures on their timeline.
@@ -52,8 +51,7 @@ https://picsinsta.herokuapp.com/
 MIT License
 
 Copyright (c) 2022 Innoncencia Kakan/instagram-clone
-=======
->>>>>>> 01cb0c3566b258527b5aeef8bc4d122ce1ce69c4
+
 
 
 
