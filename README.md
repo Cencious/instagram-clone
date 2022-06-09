@@ -1,7 +1,7 @@
 ## App Name
 * Instagram-clone
 
-![Alt text](./static/screenshot/cover.png "Optional Title")
+![Alt text](./static/screenshot/home.png "Optional Title")
 
 ## Author
 * Innoncencia Kakan.
@@ -10,10 +10,10 @@
 Instagram-clone is an app that enables a client sign in , upload pics, see profile with all uploaded pics, follow other users and see their profile, like pic and comment
 
 ## Live link:
-
+https://picsinsta.herokuapp.com/
 
 ##
-![Alt text](./static/screenshot/Screenshot.png "Optional Title")
+![Alt text](./static/screenshot/signin.png "Optional Title")
 
 
 
